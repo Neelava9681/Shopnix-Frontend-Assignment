@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Theme Selection</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        body{
+            background-color: rgb(235, 235, 234);
+        }
+        .apply-btn {
+            border: 2px solid rgb(24, 99, 156);
+            background-color: aliceblue;
+            height: 40px;
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+        }
+
+        .apply-btn-selected {
+            border: 2px solid green;
+            background-color: aliceblue;
+            height: 40px;
+            width: 80px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            border-radius: 8px;
+            color: green;
+        }
+        h4{
+            justify-content: left;
+            display: flex;
+        }
+        .next-btn{
+            display: flex;
+            justify-content:right;
+            width: 100%; 
+        }
+        .btn{
+            width: 120px;
+            height: 50px;
+            display: flex;
+            justify-content: center;
+            text-align: center;
+            align-items: center;
+            border-radius: 5px;
+        }
+        .heading{
+            font-weight: 800;
+        }
+    </style>
+
+</head>
+
+<body>
+    <div class="container mt-5">
+        <h2 class="mb-5 heading">Apply a theme</h2>
+        <div class="row">
+            <div class="col-md-4">
+                <div class="theme-card">
+                    <img src="images/theme3.png" height="300px" width="100%" alt="Bags Theme">
+                    <h4 class="mt-2">Bags Theme<span style="margin-left: 5px; font-size: 15px;align-items:end; display: flex;">&#40;recomended&#41;</span></h4>
+                    <button class="apply-btn mt-3">&#10003;</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="theme-card">
+                    <img src="images/theme1.png" height="300px" width="100%" alt="Flex Theme">
+                    <h4 class="mt-2">Flex Theme</h4>
+                    <button class="apply-btn mt-3">Apply</button>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="theme-card">
+                    <img src="images/theme2.png" height="300px" width="100% alt=" Chic Theme">
+                    <h4 class="mt-2">Chic Theme</h4>
+                    <button class="apply-btn mt-3">Apply</button>
+                </div>
+            </div>
+        </div>
+        <div class="next-btn">
+            <a href="step2.html" class="btn btn-primary mt-4">Next</a>
+        </div>
+        
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+    let buttons = document.querySelectorAll(".apply-btn");
+
+    if (buttons.length > 0) {
+        buttons[0].classList.add("apply-btn-selected");
+        buttons[0].textContent = "✓";
+    }
+    
+    buttons.forEach(button => {
+        button.addEventListener("click", function () {
+            buttons.forEach(btn => {
+                btn.classList.remove("apply-btn-selected");
+                btn.textContent = "Apply";
+            });
+            this.classList.add("apply-btn-selected");
+            this.textContent = "✓";
+        });
+    });
+});
+
+
+    </script>
+</body>
+
+</html>

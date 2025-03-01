@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step 3 - Product Details</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+       body{
+            background-color: rgb(235, 235, 234);
+        }
+
+        .container {
+            max-width: 100%;
+        }
+
+        .wizard-container {
+            display: flex;
+            height: 100vh;
+        }
+
+        .left-panel {
+            width: 50%;
+            padding: 20px;
+            background-color: rgb(235, 235, 234);
+            overflow-y: auto;
+            /*for scolling*/
+            max-height: 100vh;
+
+        }
+
+        .imag-block {
+            height: 120px;
+            width: 120px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+
+
+            position: relative;
+            background-image: url("images/blank-00cc00_040004000.png");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        #product-image {
+            position: absolute;
+            opacity: 0;
+            width: 100%;
+            height: 100%;
+            cursor: pointer;
+        }
+
+        .right-panel {
+            width: 50%;
+            padding: 20px;
+            background-color: rgb(235, 235, 234);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .buttons {
+            gap: 10px;
+        }
+
+        .product-preview {
+            border: 1px solid black;
+
+            width: 300px;
+
+            background-color: rgb(235, 235, 234);
+            text-align: center;
+        }
+
+        .product-preview img {
+            width: 100%;
+
+            max-height: 250px;
+            object-fit: cover;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container ">
+        <div class="wizard-container ">
+  
+            <div class="left-panel">
+                <h2 class="mb-5"><b>Let's add your first product</b></h2>
+                <h4 class="mb-3 mt-2">Basic Details</h4>
+
+                <label class="fw-bold">Product Name</label>
+                <input type="text" id="product-name" required class="form-control required" placeholder="e.g. Anatomy Book">
+
+                <label class="fw-bold mt-3">Product Description</label>
+                <textarea id="product-description" class="form-control" rows="3"
+                    placeholder="Enter description"></textarea>
+
+                <label class="fw-bold mt-3">Add Image(s)</label>
+                <div class="imag-block">
+                    <input type="file" id="product-image">
+                </div>
+
+                <div class="form-check mt-3">
+                    <input class="form-check-input" type="checkbox" id="sku-checkbox">
+                    <label class="form-check-label">This product has an SKU code</label>
+                </div>
+
+
+
+                <input type="text" id="sku-code" class="form-control mt-2" placeholder="e.g. PROD0001">
+
+                <div class="container bg-dark mt-5 mb-4" style="height: 1px;"></div>
+
+
+
+
+
+                <h2>Pricing Details</h2>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" id="gstInclusive">
+                    <label class="form-check-label" for="gstInclusive">
+                        Price inclusive of GST
+                    </label>
+                </div>
+
+                <form>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label for="netPrice" class="form-label">Net price</label>
+                            <input type="text" class="form-control" id="netPrice" placeholder="eg - 80">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="listPrice" class="form-label">List price</label>
+                            <input type="text" class="form-control" id="listPrice" placeholder="eg - 100">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="discountPercentage" class="form-label">Discount percentage</label>
+                            <input type="text" class="form-control" id="discountPercentage" placeholder="eg - 10">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="gstRate" class="form-label">GST rate</label>
+                            <input type="text" class="form-control" id="gstRate" placeholder="eg - 20" disabled>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="shippingCharges" class="form-label">Shipping charges (if any)</label>
+                            <input type="text" class="form-control" id="shippingCharges" placeholder="eg - 40">
+                        </div>
+                        <div class="col-md-6">
+                            <label for="stockLevel" class="form-label">Stock level</label>
+                            <input type="text" class="form-control" id="stockLevel" placeholder="eg - 110">
+                        </div>
+                    </div>
+                    <div class="buttons d-flex justify-content-end mt-4">
+                        <a href="index.html"><button type="button" class="btn btn-secondary">&lt; Back</button></a>
+                        <button type="submit" class="btn btn-primary">Next</button>
+                    </div>
+                </form>
+            </div>
+
+           
+            <div class="right-panel">
+                <div class="product-preview">
+                    <img id="preview-image"
+                        src="./images/green-cactus-in-decor-pot-over-bright-orange-pastel-background-jelena-jovanovic.jpg"
+                        alt="Product Image">
+                    <h5 id="preview-title" class="fw-bold mt-2">Product Title</h5>
+                    <p id="preview-description" style="border: 1px solid black;margin: 5px;">Product description will
+                        appear here...
+                    </p>
+                    <p style="display: flex; margin:5px; gap: 5px; justify-content: left;">
+                        <span id="preview-original-price" ;
+                            class="text-muted text-decoration-line-through">Rs100</span>
+                        <span id="preview-discounted-price" class="fw-bold">Rs90</span>
+                    </p>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+
+        let productInput = document.getElementById("product-name");
+        let previewTitle = document.getElementById("preview-title");
+        productInput.addEventListener("input", function () {
+            previewTitle.innerText = this.value || "Product Title";
+        });
+
+        let desInput = document.getElementById("product-description")
+        let previewDes = document.getElementById("preview-description")
+        desInput.addEventListener("input", function () {
+            previewDes.innerText = this.value || "Product description will appear here...";
+        });
+
+        let listPriceInput = document.getElementById("listPrice");
+        let previewLAstPrice = document.getElementById("preview-original-price");
+        let finalPrice = document.getElementById("preview-discounted-price")
+        listPriceInput.addEventListener("input", function () {
+            let price = parseFloat(this.value) || 100;
+            previewLAstPrice.innerText = "Rs" + price;
+            finalPrice.innerText = "Rs" + (price - (price * 10 / 100));
+        });
+
+
+        let discountInput = document.getElementById("discountPercentage");
+
+        discountInput.addEventListener("input", function () {
+            let price = document.getElementById("listPrice").value;
+            let lastPrice = price - (price * (this.value / 100))
+            finalPrice.innerText = "Rs" + lastPrice || "Rs90";
+        })
+
+        document.getElementById("gstInclusive").addEventListener("change", function () {
+            let gstRateInput = document.getElementById("gstRate");
+
+            if (this.checked) {
+                gstRateInput.removeAttribute("disabled");
+
+                gstRateInput.addEventListener("input", function () {
+                    let listPrice = parseFloat(document.getElementById("listPrice").value) || 0;
+                    let disPrice = parseFloat(document.getElementById("discountPercentage").value) || 0;
+                    let gstRate = parseFloat(gstRateInput.value) || 0;
+                    let afterDisPrice = listPrice - (listPrice * (disPrice / 100));
+                    let final = afterDisPrice + (afterDisPrice * (gstRate / 100));
+                    finalPrice.innerText = "Rs" + final;
+                });
+            } else {
+                gstRateInput.setAttribute("disabled", "true");
+            }
+        });
+
+        let shippingFree = document.getElementById("shippingCharges");
+        shippingFree.addEventListener("input", function () {
+            let listPrice = parseFloat(document.getElementById("listPrice").value) || 0;
+            let disPrice = parseFloat(document.getElementById("discountPercentage").value) || 0;
+            let gstRateInput = document.getElementById("gstRate");
+            let gstRate = parseFloat(gstRateInput.value) || 0;
+            let shippingCost = parseFloat(this.value) || 0;
+            let afterDisPrice = listPrice - (listPrice * (disPrice / 100));
+            let final = afterDisPrice + (afterDisPrice * (gstRate / 100)) + shippingCost;
+            finalPrice.innerText = "Rs" + final.toFixed(2);
+        });
+
+        let inputImg = document.getElementById("product-image");
+        let previewImg = document.getElementById("preview-image");
+        
+
+        inputImg.addEventListener("change", function (event) {
+            let file = event.target.files[0]; 
+            if (file) {
+                let reader = new FileReader();
+                reader.onload = function (e) {
+                    previewImg.src = e.target.result; 
+                };
+                reader.readAsDataURL(file); 
+            }
+        });
+
+        document.querySelector("form").addEventListener("submit", function (event) {
+            event.preventDefault();
+            let productName = document.getElementById("product-name").value.trim();
+            let productDescription = document.getElementById("product-description").value.trim();
+            let listPrice = document.getElementById("listPrice").value.trim();
+            let discountPercentage = document.getElementById("discountPercentage").value.trim();
+            let shippingCharges = document.getElementById("shippingCharges").value.trim();
+            let stockLevel = document.getElementById("stockLevel").value.trim();
+            if (!productName || !productDescription || !listPrice || !discountPercentage || !shippingCharges || !stockLevel) {
+                alert("Please fill in all required fields before proceeding.");
+                return;
+            }
+            alert("Product added successfully!");
+            window.location.href = "index.html";
+        });
+    </script>
+</body>
+</html>
